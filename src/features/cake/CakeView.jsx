@@ -1,21 +1,31 @@
 import React from 'react'
-import {useSelector,useDispatch} from 'react-redux';
-
+import {useSelector,useDispatch} from 'react-redux'
 import {ordered,restocked}  from './cakeSlice'
+
+import {useStore} from '../../app/store';
 
 
 
 const CakeView = () => {
 
-    const numOfCakes = useSelector((state)=>state.cake.numOfCakes)
+  const {numOfCakes,orderedCake,restockedCake} = useStore(
+    (state)=>({
+      numOfCakes :state.numOfCakes,
+      orderedCake :state.orderedCake,
+      restockedCake :state.restockedCake,
+
+    })
+  )
+
+    const numOfCakesRTK = useSelector((state)=>state.cake.numOfCakes)
     const dispatch = useDispatch()
 
 
   return (
     <div>
         <h2>Number of Cakes - {numOfCakes} </h2>
-        <button onClick = {()=>dispatch(ordered())}>Order Cake</button>
-        <button onClick  = {()=>dispatch(restocked(3))}>Restock Cakes</button>
+        <button onClick = {()=>orderedCake()}>Order Cake</button>
+        <button onClick  = {()=>restockedCake(10)}>Restock Cakes</button>
     </div>
   )
 }

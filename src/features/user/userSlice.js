@@ -40,5 +40,8 @@ const userSlice = createSlice({
    
 });
 
+export const selectLoadingState = state => state.user.loading
+export const selectUsersFetchStatus = state => state.user.users
+export const selectUserFetchStatus = state => state.user.error
 
 export default userSlice.reducer;
