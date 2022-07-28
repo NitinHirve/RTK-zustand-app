@@ -38,13 +38,20 @@ const store = configureStore({
 
     fetchUsersZustand: async () => {
 
+        set((state)=>({
+            usersZustand:{...state.usersZustand,loading:true}
+        }))
         
-
+        set((state)=>{console.log('Loading : ',state.usersZustand)})
+       
         const response = await axios.get('https://jsonplaceholder.typicode.com/users')
         console.log('Users response zustand : ',response)
         set((state)=>({
-            usersZustand:{...state.usersZustand,usersList:response.data}
+            usersZustand:{...state.usersZustand,usersList:response.data,loading:false}
         }))
+
+        set((state)=>{console.log('Done : ',state.usersZustand)})
+      
       },
 
     // fetchUsers : ()=>{
