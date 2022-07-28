@@ -22,8 +22,9 @@ const store = configureStore({
 //     return axios
 //      .get('https://jsonplaceholder.typicode.com/users')
 //      .then((res)=>{
-//        return res.data
+//        return res.data;
 //      })
+//
 //  })
 
  const storeZustand = (set) => ({
