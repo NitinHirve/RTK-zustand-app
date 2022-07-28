@@ -37,6 +37,9 @@ const store = configureStore({
     },
 
     fetchUsersZustand: async () => {
+
+        
+
         const response = await axios.get('https://jsonplaceholder.typicode.com/users')
         console.log('Users response zustand : ',response)
         set((state)=>({
@@ -44,9 +47,9 @@ const store = configureStore({
         }))
       },
 
-    fetchUsers : ()=>{
+    // fetchUsers : ()=>{
 
-    },
+    // },
 
     orderedCake :()=>{
         set((state)=>({
